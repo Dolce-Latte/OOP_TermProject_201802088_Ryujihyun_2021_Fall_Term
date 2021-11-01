@@ -1,10 +1,8 @@
 #include<iostream>
 #include<string>
 #include<stack>
-#include<sstream>
-#include<vector>
-#include<iterator>
 #include "InFix_To_PostFix.h"
+#include "Calculate_PostExpression.h"
 
 using namespace std;
 
@@ -61,7 +59,8 @@ int main() {
 	cin.getline(inFix, 50);
 
 	in_To_Post(inFix, postFix);
-
+	int ans = calculatePostFix(postFix);
+	cout << endl << ans<< endl;
 	cout << endl << "postFix" << endl << postFix << endl;
 	return 0;
 }
