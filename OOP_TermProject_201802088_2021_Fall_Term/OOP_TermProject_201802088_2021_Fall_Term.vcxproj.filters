@@ -18,5 +18,16 @@
     <ClCompile Include="Calculator.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="mainCal.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="InFix_To_PostFix.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="InFix_To_PostFix.h">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
