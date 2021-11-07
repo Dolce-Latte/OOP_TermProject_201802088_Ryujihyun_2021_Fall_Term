@@ -138,15 +138,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Calculate_PostExpression.cpp" />
-    <ClCompile Include="InFix_To_PostFix.cpp" />
-    <ClCompile Include="mainCal.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="InFix_To_PostFix.h" />
-    <ClInclude Include="Calculate_PostExpression.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
