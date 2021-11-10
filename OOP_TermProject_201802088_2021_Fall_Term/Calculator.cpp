@@ -6,38 +6,54 @@ using namespace std;
 
 class Command {
 public:
-	virtual int calculationExecute(int firstOperand, int secondOperand) = 0;
+	virtual ~Command(){};
+	virtual int calculationExecute(int secondOperand, int firstOperand) = 0;
 };
 
 class Addition_Command : public Command {
 public:
-	Addition_Command()
+	int calculationExecute(int secondOperand, int firstOperand) override {
+		return secondOperand + firstOperand;
+	}
 };
 
-class Calculator {
-private:
-	Expressions* expressions;
-	stack<int> intStack;
-	int result = 0;
+class Subtraction_Command : public Command {
 public:
-	
+	int calculationExecute(int secondOperand, int firstOperand) override {
+		return secondOperand - firstOperand;
+	}
+};
+
+class Multiplication_Command : public Command {
+public:
+	int calculationExecute(int secondOperand, int firstOperand) override {
+		return secondOperand * firstOperand;
+	}
+};
+
+class Division_Command : public Command {
+public:
+	int calculationExecute(int secondOperand, int firstOperand) override {
+		if (firstOperand == 0) {
+			throw 0;
+		}
+		return secondOperand / firstOperand;
+	}
 };
 
 class Calculations {
 private:
-	int result;
+	int result = 0;
 	string expressions;
+	Command* cal_Command = nullptr;
 public:
-	Calculations(string expressions, int result) {
-		setExpressions(expressions);
-		setResult(result);
+
+	void setExpressions(string expressions) {
+		this->expressions = expressions;
 	}
 
 	void setResult(int result) {
 		this->result = result;
-	}
-	void setExpressions(string expressions) {
-		this->expressions = expressions;
 	}
 
 	int getResult() {
@@ -47,12 +63,12 @@ public:
 		return expressions;
 	}
 
-	int calculate();
+	void calculate();
 };
 
-int Calculations::calculate() {
+void Calculations::calculate() {
 	string str = this->getExpressions();
-	int answer = this->getResult();
+	int answer;
 	stack<int> intStack;
 
 	for (int i = 0; str[i] != NULL; i++) {
@@ -61,8 +77,12 @@ int Calculations::calculate() {
 
 		if (token == ' ') { continue; }
 		if ('0' <= token && token <= '9') {
-			answer = answer * 10 + (token - '0');
+			answer = token - '0';
 			token = str[++i];
+			while ('0' <= token && token <= '9') {
+				answer = answer * 10 + (token - '0');
+				token = str[++i];
+			}
 		}
 		else {
 			int firstOperand = intStack.top();
@@ -71,19 +91,37 @@ int Calculations::calculate() {
 			intStack.pop();
 
 			switch (token) {
-
+			case '+':
+				cal_Command = new Addition_Command();
+				answer = cal_Command->calculationExecute(secondOperand, firstOperand);
+				break;
+			case '-':
+				cal_Command = new Subtraction_Command();
+				answer = cal_Command->calculationExecute(secondOperand, firstOperand);
+				break;
+			case '*':
+				cal_Command = new Multiplication_Command();
+				answer = cal_Command->calculationExecute(secondOperand, firstOperand);
+				break;
+			case '/':
+				cal_Command = new Division_Command();
+				answer = cal_Command->calculationExecute(secondOperand, firstOperand);
+				break;
 			}
 		}
+		intStack.push(answer);
 	}
+	answer = intStack.top();
+	intStack.pop();
+	this->setResult(answer);
+	delete cal_Command;
+	return;
 }
 class Expressions {
 private:
 	string postExpressions;
 	string inExpressions;
 public:
-	Expressions(string inExpressions) {
-		setInExpressions(inExpressions);
-	}
 
 	void setInExpressions(string inExpressions) {
 		this->inExpressions = inExpressions;
@@ -149,51 +187,71 @@ void Expressions::inFixToPostFix()
 		}
 		else if (token == '(') { charStack.push(token); }
 		else if (token == '*') {
-			if (charStack.empty()) { charStack.push(token); }
-			else {
-				char stackToken = charStack.top();
-				if (getPriority(stackToken, token)) {
-					postFix += charStack.top();
-					postFix += " ";
-					charStack.pop();
+			if (inExpressions[i + 1] == '+' || inExpressions[i + 1] == '-' || inExpressions[i + 1] == '*' || inExpressions[i + 1] == '/') {
+				throw token;
+			}
+			else{
+				if (charStack.empty()) { charStack.push(token); }
+				else {
+					char stackToken = charStack.top();
+					if (getPriority(stackToken, token)) {
+						postFix += charStack.top();
+						postFix += " ";
+						charStack.pop();
+					}
+					charStack.push(token);
 				}
-				charStack.push(token);
 			}
 		}
 		else if (token == '/') {
-			if (charStack.empty()) { charStack.push(token); }
+			if (inExpressions[i + 1] == '+' || inExpressions[i + 1] == '-' || inExpressions[i + 1] == '*' || inExpressions[i + 1] == '/') {
+				throw token;
+			}
 			else {
-				char stackToken = charStack.top();
-				if (getPriority(stackToken, token)) {
-					postFix += charStack.top();
-					postFix += " ";
-					charStack.pop();
+				if (charStack.empty()) { charStack.push(token); }
+				else {
+					char stackToken = charStack.top();
+					if (getPriority(stackToken, token)) {
+						postFix += charStack.top();
+						postFix += " ";
+						charStack.pop();
+					}
+					charStack.push(token);
 				}
-				charStack.push(token);
 			}
 		}
 		else if (token == '+') {
-			if (charStack.empty()) { charStack.push(token); }
+			if (inExpressions[i + 1] == '+' || inExpressions[i + 1] == '-' || inExpressions[i + 1] == '*' || inExpressions[i + 1] == '/') {
+				throw token;
+			}
 			else {
-				char stackToken = charStack.top();
-				if (getPriority(stackToken, token)) {
-					postFix += charStack.top();
-					postFix += " ";
-					charStack.pop();
+				if (charStack.empty()) { charStack.push(token); }
+				else {
+					char stackToken = charStack.top();
+					if (getPriority(stackToken, token)) {
+						postFix += charStack.top();
+						postFix += " ";
+						charStack.pop();
+					}
+					charStack.push(token);
 				}
-				charStack.push(token);
 			}
 		}
 		else if (token == '-') {
-			if (charStack.empty()) { charStack.push(token); }
+			if (inExpressions[i + 1] == '+' || inExpressions[i + 1] == '-' || inExpressions[i + 1] == '*' || inExpressions[i + 1] == '/') {
+				throw token;
+			}
 			else {
-				char stackToken = charStack.top();
-				if (getPriority(stackToken, token)) {
-					postFix += charStack.top();
-					postFix += " ";
-					charStack.pop();
+				if (charStack.empty()) { charStack.push(token); }
+				else {
+					char stackToken = charStack.top();
+					if (getPriority(stackToken, token)) {
+						postFix += charStack.top();
+						postFix += " ";
+						charStack.pop();
+					}
+					charStack.push(token);
 				}
-				charStack.push(token);
 			}
 		}
 		else if (token == ')') {
@@ -258,14 +316,50 @@ bool Expressions::getPriority(char stackOperand, char currentOperand)
 	return false;
 }
 
+class Calculator {
+private:
+	Expressions* expressions;
+	Calculations* calculations;
+	string str_;
+public:
+	Calculator(string expr){
+		this->expressions = new Expressions();
+		this->calculations = new Calculations();
+		this->str_ = expr;
+	}
+
+	void operation();
+};
+
+void Calculator::operation() {
+	string numerical_;
+	expressions->setInExpressions(str_);
+	expressions->changeNumberInExpr();
+	expressions->inFixToPostFix();
+	numerical_ = expressions->getPostExpressions();
+	calculations->setExpressions(numerical_);
+	calculations->calculate();
+	cout << calculations->getResult() << endl;
+	
+}
 int main() {
 	string exp;
 	string re;
 	cin >> exp;
-	Expressions* expressions = new Expressions(exp);
-	expressions->changeNumberInExpr();
-	expressions->inFixToPostFix();
-	cout << expressions->getPostExpressions() << endl;
+	Calculator* calculator = new Calculator(exp);
+	try {
+		calculator->operation();
+	}
+	catch (char e) {
+		cout << "잘못된 수식입력입니다." << endl;
+	}
+	catch (int e) {
+		cout << "0으로 나눌수 없습니다." << endl;
+	}
+	catch (...) {
+		cout << "알 수 없는 오류입니다." << endl;
+	}
+	
 
 	return 0;
 }
