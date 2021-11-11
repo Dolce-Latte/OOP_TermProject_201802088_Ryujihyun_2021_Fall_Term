@@ -176,88 +176,90 @@ void Expressions::inFixToPostFix()
 	stack<char> charStack;
 	string postFix;
 	int countParenthesis = 0;
-	for (int i = 0; inExpressions[i] != NULL; i++) {
-		char token = inExpressions[i];
 
-		if ('0' <= token && token <= '9') {
-			postFix += token;
-			if ('0' > inExpressions[i + 1] || inExpressions[i + 1] > '9') {
+	for (int i = 0; inExpressions[i] != NULL; i++) {
+		char currentToken = inExpressions[i];
+		char postToken = inExpressions[i + 1];
+
+		if (isdigit(currentToken)) {
+			postFix += currentToken;
+			if (!isdigit(postToken)) {
 				postFix += " ";
 			}
 		}
-		else if (token == '(') { 
-			charStack.push(token);
+		else if (currentToken == '(') {
+			charStack.push(currentToken);
 			countParenthesis++;
 		}
-		else if (token == '*') {
+		else if (currentToken == '*') {
 			if (inExpressions[i + 1] == '+' || inExpressions[i + 1] == '-' || inExpressions[i + 1] == '*' || inExpressions[i + 1] == '/') {
-				throw token;
+				throw currentToken;
 			}
 			else{
-				if (charStack.empty()) { charStack.push(token); }
+				if (charStack.empty()) { charStack.push(currentToken); }
 				else {
 					char stackToken = charStack.top();
-					if (getPriority(stackToken, token)) {
+					if (getPriority(stackToken, currentToken)) {
 						postFix += charStack.top();
 						postFix += " ";
 						charStack.pop();
 					}
-					charStack.push(token);
+					charStack.push(currentToken);
 				}
 			}
 		}
-		else if (token == '/') {
+		else if (currentToken == '/') {
 			if (inExpressions[i + 1] == '+' || inExpressions[i + 1] == '-' || inExpressions[i + 1] == '*' || inExpressions[i + 1] == '/') {
-				throw token;
+				throw currentToken;
 			}
 			else {
-				if (charStack.empty()) { charStack.push(token); }
+				if (charStack.empty()) { charStack.push(currentToken); }
 				else {
 					char stackToken = charStack.top();
-					if (getPriority(stackToken, token)) {
+					if (getPriority(stackToken, currentToken)) {
 						postFix += charStack.top();
 						postFix += " ";
 						charStack.pop();
 					}
-					charStack.push(token);
+					charStack.push(currentToken);
 				}
 			}
 		}
-		else if (token == '+') {
+		else if (currentToken == '+') {
 			if (inExpressions[i + 1] == '+' || inExpressions[i + 1] == '-' || inExpressions[i + 1] == '*' || inExpressions[i + 1] == '/') {
-				throw token;
+				throw currentToken;
 			}
 			else {
-				if (charStack.empty()) { charStack.push(token); }
+				if (charStack.empty()) { charStack.push(currentToken); }
 				else {
 					char stackToken = charStack.top();
-					if (getPriority(stackToken, token)) {
+					if (getPriority(stackToken, currentToken)) {
 						postFix += charStack.top();
 						postFix += " ";
 						charStack.pop();
 					}
-					charStack.push(token);
+					charStack.push(currentToken);
 				}
 			}
 		}
-		else if (token == '-') {
+		else if (currentToken == '-') {
 			if (inExpressions[i + 1] == '+' || inExpressions[i + 1] == '-' || inExpressions[i + 1] == '*' || inExpressions[i + 1] == '/') {
-				throw token;
+				throw currentToken;
 			}
 			else {
-				if (charStack.empty()) { charStack.push(token); }
+				if (charStack.empty()) { charStack.push(currentToken); }
 				else {
 					char stackToken = charStack.top();
-					if (getPriority(stackToken, token)) {
+					if (getPriority(stackToken, currentToken)) {
 						postFix += charStack.top();
 						postFix += " ";
 						charStack.pop();
 					}
-					charStack.push(token);
+					charStack.push(currentToken);
 				}
 			}
 		}
-		else if (token == ')') {
+		else if (currentToken == ')') {
 			int stackToken = charStack.top();
 			charStack.pop();
 			while (stackToken != '(') {
@@ -269,7 +271,7 @@ void Expressions::inFixToPostFix()
 			countParenthesis--;
 		}
 		else {
-			throw token;
+			throw currentToken;
 		}
 	}
 	if (countParenthesis != 0) {
