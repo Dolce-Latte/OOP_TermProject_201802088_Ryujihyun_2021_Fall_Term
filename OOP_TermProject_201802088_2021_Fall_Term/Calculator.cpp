@@ -176,6 +176,7 @@ void Expressions::inFixToPostFix()
 	stack<char> charStack;
 	string postFix;
 	int countParenthesis = 0;
+	int NF = 0, OF = 0;
 
 	for (int i = 0; inExpressions[i] != NULL; i++) {
 		char currentToken = inExpressions[i];
@@ -185,35 +186,22 @@ void Expressions::inFixToPostFix()
 			postFix += currentToken;
 			if (!isdigit(postToken)) {
 				postFix += " ";
+				NF++;
 			}
 		}
 		else if (currentToken == '(') {
 			charStack.push(currentToken);
 			countParenthesis++;
 		}
-		else if (currentToken == '*') {
-			if (inExpressions[i + 1] == '+' || inExpressions[i + 1] == '-' || inExpressions[i + 1] == '*' || inExpressions[i + 1] == '/') {
+		else if (currentToken == '*' || currentToken == '+' || currentToken == '/' || currentToken == '-') {
+			if (postToken == '+' || postToken == '-' || postToken == '*' || postToken == '/') {
 				throw currentToken;
 			}
 			else{
-				if (charStack.empty()) { charStack.push(currentToken); }
-				else {
-					char stackToken = charStack.top();
-					if (getPriority(stackToken, currentToken)) {
-						postFix += charStack.top();
-						postFix += " ";
-						charStack.pop();
-					}
+				if (charStack.empty()) { 
 					charStack.push(currentToken);
+					OF++;
 				}
-			}
-		}
-		else if (currentToken == '/') {
-			if (inExpressions[i + 1] == '+' || inExpressions[i + 1] == '-' || inExpressions[i + 1] == '*' || inExpressions[i + 1] == '/') {
-				throw currentToken;
-			}
-			else {
-				if (charStack.empty()) { charStack.push(currentToken); }
 				else {
 					char stackToken = charStack.top();
 					if (getPriority(stackToken, currentToken)) {
@@ -222,40 +210,7 @@ void Expressions::inFixToPostFix()
 						charStack.pop();
 					}
 					charStack.push(currentToken);
-				}
-			}
-		}
-		else if (currentToken == '+') {
-			if (inExpressions[i + 1] == '+' || inExpressions[i + 1] == '-' || inExpressions[i + 1] == '*' || inExpressions[i + 1] == '/') {
-				throw currentToken;
-			}
-			else {
-				if (charStack.empty()) { charStack.push(currentToken); }
-				else {
-					char stackToken = charStack.top();
-					if (getPriority(stackToken, currentToken)) {
-						postFix += charStack.top();
-						postFix += " ";
-						charStack.pop();
-					}
-					charStack.push(currentToken);
-				}
-			}
-		}
-		else if (currentToken == '-') {
-			if (inExpressions[i + 1] == '+' || inExpressions[i + 1] == '-' || inExpressions[i + 1] == '*' || inExpressions[i + 1] == '/') {
-				throw currentToken;
-			}
-			else {
-				if (charStack.empty()) { charStack.push(currentToken); }
-				else {
-					char stackToken = charStack.top();
-					if (getPriority(stackToken, currentToken)) {
-						postFix += charStack.top();
-						postFix += " ";
-						charStack.pop();
-					}
-					charStack.push(currentToken);
+					OF++;
 				}
 			}
 		}
@@ -274,8 +229,8 @@ void Expressions::inFixToPostFix()
 			throw currentToken;
 		}
 	}
-	if (countParenthesis != 0) {
-		throw '(';
+	if ((countParenthesis != 0) || (NF == OF)) {
+		throw 'e';
 	}
 	while (!charStack.empty()) {
 		int stackToken = charStack.top();
@@ -292,7 +247,7 @@ void Expressions::hexaDecimal(int& index, string& before, string& after)
 	int j;
 	int hex = 0;
 	string tmp;
-	for (j = index + 2; (j < len) && (('0' <= before[j] && before[j] <= '9') || ('a' <= before[j] && before[j] <= 'f')); j++) {
+	for (j = index + 2; (j < len) && ((isdigit(before[j])) || ('a' <= before[j] && before[j] <= 'f')); j++) {
 		tmp += before[j];
 	}
 	hex = stoi(tmp, nullptr, 16);
@@ -307,7 +262,7 @@ void Expressions::binary(int& index, string& before, string& after)
 	int j;
 	int bin = 0;
 	string tmp;
-	for (j = index + 2; (j < len) && ('0' <= before[j] && before[j] <= '1'); j++) {
+	for (j = index + 2; (j < len) && (isdigit(before[j])); j++) {
 		tmp += before[j];
 	}
 	bin = stoi(tmp, nullptr, 2);
