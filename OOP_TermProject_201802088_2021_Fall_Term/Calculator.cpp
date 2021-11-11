@@ -175,7 +175,7 @@ void Expressions::inFixToPostFix()
 	string str = this->getInExpressions();
 	stack<char> charStack;
 	string postFix;
-
+	int countParenthesis = 0;
 	for (int i = 0; inExpressions[i] != NULL; i++) {
 		char token = inExpressions[i];
 
@@ -185,7 +185,10 @@ void Expressions::inFixToPostFix()
 				postFix += " ";
 			}
 		}
-		else if (token == '(') { charStack.push(token); }
+		else if (token == '(') { 
+			charStack.push(token);
+			countParenthesis++;
+		}
 		else if (token == '*') {
 			if (inExpressions[i + 1] == '+' || inExpressions[i + 1] == '-' || inExpressions[i + 1] == '*' || inExpressions[i + 1] == '/') {
 				throw token;
@@ -263,8 +266,14 @@ void Expressions::inFixToPostFix()
 				stackToken = charStack.top();
 				charStack.pop();
 			}
+			countParenthesis--;
 		}
-		else;
+		else {
+			throw token;
+		}
+	}
+	if (countParenthesis != 0) {
+		throw '(';
 	}
 	while (!charStack.empty()) {
 		int stackToken = charStack.top();
