@@ -35,7 +35,8 @@ class Division_Command : public Command {
 public:
 	int calculationExecute(int secondOperand, int firstOperand) override {
 		if (firstOperand == 0) {
-			throw 0;
+			string e = "0으로 나눌수 없습니다.";
+			throw e;
 		}
 		return secondOperand / firstOperand;
 	}
@@ -195,7 +196,8 @@ void Expressions::inFixToPostFix()
 		}
 		else if (currentToken == '*' || currentToken == '+' || currentToken == '/' || currentToken == '-') {
 			if (postToken == '+' || postToken == '-' || postToken == '*' || postToken == '/') {
-				throw currentToken;
+				string e = "잘못된 수식입력입니다.";
+				throw e;
 			}
 			else{
 				if (charStack.empty()) { 
@@ -226,11 +228,13 @@ void Expressions::inFixToPostFix()
 			countParenthesis--;
 		}
 		else {
-			throw currentToken;
+			string e = "잘못된 수식입력입니다.";
+			throw e;
 		}
 	}
 	if ((countParenthesis != 0) || (NF == OF)) {
-		throw 'e';
+		string e = "잘못된 수식입력입니다.";
+		throw e;
 	}
 	while (!charStack.empty()) {
 		int stackToken = charStack.top();
@@ -309,22 +313,40 @@ void Calculator::operation() {
 	
 }
 int main() {
-	string exp;
-	string re;
-	cin >> exp;
-	Calculator* calculator = new Calculator(exp);
+	
+	string input;
+	Calculator* calculator;
+	while (true) {
+		cout << "수식을 입력하세요.(종료 : QUIT)" << endl;
+		getline(cin, input);
+
+		if (input == "QUIT") {
+			break;
+		}
+		calculator = new Calculator(input);
+
+		try {
+			calculator->operation();
+		}
+		catch (string e) {
+			cout << e << endl;
+		}
+		catch (...) {
+			cout << "알 수 없는 오류" << endl;
+		}
+	}
+	
+	/*string expressions;
+	cin >> expressions;
+	Calculator* calculator = new Calculator(expressions);
 	try {
 		calculator->operation();
 	}
-	catch (char e) {
-		cout << "잘못된 수식입력입니다." << endl;
-	}
-	catch (int e) {
-		cout << "0으로 나눌수 없습니다." << endl;
-	}
-	catch (...) {
-		cout << "알 수 없는 오류입니다." << endl;
-	}
+	catch (string e) {
+		cout << e << endl;
+	}*/
+	
+	
 	
 
 	return 0;
