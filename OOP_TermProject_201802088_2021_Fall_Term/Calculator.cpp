@@ -35,8 +35,8 @@ class Division_Command : public Command {
 public:
 	int calculationExecute(int secondOperand, int firstOperand) override {
 		if (firstOperand == 0) {
-			string e = "0으로 나눌수 없습니다.";
-			throw e;
+			//string e = "0으로 나눌수 없습니다.";
+			throw "0으로 나눌수 없습니다.";
 		}
 		return secondOperand / firstOperand;
 	}
@@ -336,15 +336,6 @@ int main() {
 		}
 	}
 	
-	/*string expressions;
-	cin >> expressions;
-	Calculator* calculator = new Calculator(expressions);
-	try {
-		calculator->operation();
-	}
-	catch (string e) {
-		cout << e << endl;
-	}*/
 	
 	
 	
