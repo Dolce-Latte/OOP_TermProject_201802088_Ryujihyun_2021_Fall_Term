@@ -16,8 +16,8 @@ int main() {
 			calculator->operationExpr();
 			calculator->operationCalc();
 		}
-		catch (std::string e) {
-			std::cout << e << std::endl;
+		catch (std::logic_error& e) {
+			std::cout << e.what() << std::endl;
 		}
 		catch (...) {
 			std::cout << "알 수 없는 오류" << std::endl;

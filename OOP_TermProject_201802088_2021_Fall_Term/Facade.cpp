@@ -18,5 +18,5 @@ void Facade::operationExpr() {
 void Facade::operationCalc() {
 	this->_calculations->setExpressions(this->_expr);
 	this->_calculations->calculate();
-	std::cout << this->_calculations->getResult() << std::endl;
+	std::cout << this->_calculations->getResult() << std::endl << std::endl;
 }

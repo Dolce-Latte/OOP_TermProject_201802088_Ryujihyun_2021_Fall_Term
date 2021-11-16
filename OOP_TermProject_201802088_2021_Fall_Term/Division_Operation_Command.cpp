@@ -3,8 +3,7 @@
 
 int Division_Operation::operationExecute(int secondOperand, int firstOperand) {
 	if (firstOperand == 0) {
-		//string e = "0으로 나눌수 없습니다.";
-		throw "0으로 나눌수 없습니다.";
+		throw std::logic_error("0으로 나눌 수 없습니다.");
 	}
 	return secondOperand / firstOperand;
 }

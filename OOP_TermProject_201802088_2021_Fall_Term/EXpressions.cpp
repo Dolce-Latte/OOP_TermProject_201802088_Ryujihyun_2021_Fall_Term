@@ -22,7 +22,7 @@ void Expressions::changeNumber() {
 
 	for (int i = 0; (i < _length) && (_oldExpr[i] != NULL); i++) {
 		char _stringToken = _oldExpr[i];
-		if (isdigit(_stringToken)) {
+		if ('0' <= _stringToken && _stringToken <= '9') {
 			if (_stringToken == '0') {
 				if (_oldExpr[i + 1] == 'x') {
 					hexa(i, _oldExpr, _newExpr);
@@ -41,7 +41,7 @@ void Expressions::changeNumber() {
 }
 
 void Expressions::inExprToPostExpr() {
-	std::string _oldExpr = this->getPreExpressions();
+	std::string _oldExpr = this->getPostExpressions();
 	std::string _newExpr;
 	std::stack<char> _charStack;
 	int PF = 0, NF = 0, OF = 0; //Parenthesis, Number, Operator flag
@@ -63,7 +63,7 @@ void Expressions::inExprToPostExpr() {
 		}
 		else if (_currToken == '*' || _currToken == '+' || _currToken == '-' || _currToken == '/') {
 			if (_postToken == '*' || _postToken == '+' || _postToken == '-' || _postToken == '/') {
-				throw "잘못된 수식입력!!";
+				throw std::logic_error("연산자 연속 입력!!");
 			}
 			else {
 				if (_charStack.empty()) {
@@ -94,11 +94,11 @@ void Expressions::inExprToPostExpr() {
 			PF--;
 		}
 		else {
-			throw "알 수 없는 입력!!";
+			throw std::logic_error("수식 기호가 아닙니다!!");
 		}
 	}
 	if ((PF != 0) || (NF == OF)) {
-		throw "괄호 또는 숫자, 수식 입력이 잘못되었습니다!!";
+		throw std::logic_error("괄호의 개수가 맞지 않거나 계산할 수 없는 수식입니다!!");
 	}
 	while (!_charStack.empty()) {
 		int _stackToken = _charStack.top();
@@ -114,7 +114,7 @@ void Expressions::hexa(int& index, std::string& beforeExpr, std::string& afterEx
 	int _tmpIndex;
 	int _hexNum = 0;
 	std::string _tmpExpr;
-	for (_tmpIndex = index + 2; (_tmpIndex < _length) && (isdigit(beforeExpr[_tmpIndex]) || islower(beforeExpr[_tmpIndex])); _tmpIndex++) {
+	for (_tmpIndex = index + 2; (_tmpIndex < _length) && (isdigit(beforeExpr[_tmpIndex]) || ('a' <= beforeExpr[_tmpIndex] && beforeExpr[_tmpIndex] <= 'f')); _tmpIndex++) {
 		_tmpExpr += beforeExpr[_tmpIndex];
 	}
 	_hexNum = stoi(_tmpExpr, nullptr, 16);
@@ -128,7 +128,7 @@ void Expressions::binary(int& index, std::string& beforeExpr, std::string& after
 	int _tmpIndex;
 	int _binNum = 0;
 	std::string _tmpExpr;
-	for (_tmpIndex = index + 2; (_tmpIndex < _length) && (isdigit(beforeExpr[_tmpIndex])); _tmpIndex++) {
+	for (_tmpIndex = index + 2; (_tmpIndex < _length) && ('0' <= beforeExpr[_tmpIndex] && beforeExpr[_tmpIndex] <= '1'); _tmpIndex++) {
 		_tmpExpr += beforeExpr[_tmpIndex];
 	}
 	_binNum = stoi(_tmpExpr,nullptr,2);
