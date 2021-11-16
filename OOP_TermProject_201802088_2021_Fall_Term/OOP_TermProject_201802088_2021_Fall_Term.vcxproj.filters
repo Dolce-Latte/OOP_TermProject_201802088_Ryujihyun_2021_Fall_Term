@@ -30,25 +30,28 @@
     <ClCompile Include="Division_Operation_Strategy.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Expressions.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Operation_Strategy.hpp">
-      <Filter>소스 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Add_Operation_Strategy.hpp">
-      <Filter>소스 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Multiplication_Operation_Strategy.hpp">
-      <Filter>소스 파일</Filter>
+      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Subtraction_Operation_Strategy.hpp">
-      <Filter>소스 파일</Filter>
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Multiplication_Operation_Strategy.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Operation_Strategy.hpp">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Division_Operation_Strategy.hpp">
-      <Filter>소스 파일</Filter>
+      <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Expressions.hpp">
-      <Filter>소스 파일</Filter>
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

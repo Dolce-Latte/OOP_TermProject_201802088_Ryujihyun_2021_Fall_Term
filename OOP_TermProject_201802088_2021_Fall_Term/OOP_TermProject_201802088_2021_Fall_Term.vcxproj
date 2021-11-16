@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Add_Operation_Strategy.cpp" />
     <ClCompile Include="Calculator.cpp" />
+    <ClCompile Include="Expressions.cpp" />
     <ClCompile Include="Subtraction_Operation_Strategy.cpp" />
     <ClCompile Include="Multiplication_Operation_Strategy.cpp" />
     <ClCompile Include="Division_Operation_Strategy.cpp" />
