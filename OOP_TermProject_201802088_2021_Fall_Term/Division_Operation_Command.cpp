@@ -1,6 +1,5 @@
 #include "Division_Operation_Command.hpp"
 
-Division_Operation::~Division_Operation() {}
 
 int Division_Operation::operationExecute(int secondOperand, int firstOperand) {
 	if (firstOperand == 0) {

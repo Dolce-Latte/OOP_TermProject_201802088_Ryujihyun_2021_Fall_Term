@@ -1,56 +1,59 @@
 #include"Expressions.hpp"
 
-Expressions::Expressions(std::string expr) : _expr(expr) {}
-
-Expressions::~Expressions() {}
-
-void Expressions::setExpressions(std::string expr) {
-	this->_expr = expr;
+void Expressions::setPreExpressions(std::string preExpr) {
+	this->_preExpr = preExpr;
 }
 
-std::string Expressions::getExpressions() {
-	return this->_expr;
+void Expressions::setPostExpressions(std::string postExpr) {
+	this->_postExpr = postExpr;
+}
+std::string Expressions::getPreExpressions() {
+	return this->_preExpr;
+}
+
+std::string Expressions::getPostExpressions() {
+	return this->_postExpr;
 }
 
 void Expressions::changeNumber() {
-	std::string _preExpr = this->getExpressions();
-	std::string _postExpr;
-	int _length = _preExpr.length();
+	std::string _oldExpr = this->getPreExpressions();
+	std::string _newExpr;
+	int _length = _oldExpr.length();
 
-	for (int i = 0; (i < _length) && (_preExpr[i] != NULL); i++) {
-		char _stringToken = _preExpr[i];
+	for (int i = 0; (i < _length) && (_oldExpr[i] != NULL); i++) {
+		char _stringToken = _oldExpr[i];
 		if (isdigit(_stringToken)) {
 			if (_stringToken == '0') {
-				if (_preExpr[i + 1] == 'x') {
-					hexa(i, _preExpr, _postExpr);
+				if (_oldExpr[i + 1] == 'x') {
+					hexa(i, _oldExpr, _newExpr);
 				}
 				else if (_preExpr[i + 1] == 'b') {
-					binary(i, _preExpr, _postExpr);
+					binary(i, _oldExpr, _newExpr);
 				}
-				else { _postExpr += _stringToken; }
+				else { _newExpr += _stringToken; }
 			}
-			else{ _postExpr += _stringToken; }
+			else{ _newExpr += _stringToken; }
 		}
-		else{ _postExpr += _stringToken; }
+		else{ _newExpr += _stringToken; }
 	}
-	this->setExpressions(_postExpr);
+	this->setPostExpressions(_newExpr);
 	return;
 }
 
 void Expressions::inExprToPostExpr() {
-	std::string _preExpr = this->getExpressions();
-	std::string _postExpr;
+	std::string _oldExpr = this->getPreExpressions();
+	std::string _newExpr;
 	std::stack<char> _charStack;
 	int PF = 0, NF = 0, OF = 0; //Parenthesis, Number, Operator flag
 
-	for (int i = 0; _preExpr[i] != NULL; i++) {
-		char _currToken = _preExpr[i];
-		char _postToken = _preExpr[i + 1];
+	for (int i = 0; _oldExpr[i] != NULL; i++) {
+		char _currToken = _oldExpr[i];
+		char _postToken = _oldExpr[i + 1];
 
 		if (isdigit(_currToken)) {
-			_postExpr += _currToken;
+			_newExpr += _currToken;
 			if (!isdigit(_postToken)) {
-				_postExpr += " ";
+				_newExpr += " ";
 				NF++;
 			}
 		}
@@ -70,8 +73,8 @@ void Expressions::inExprToPostExpr() {
 				else {
 					char _stackToken = _charStack.top();
 					if (getPriority(_stackToken, _currToken)) {
-						_postExpr += _charStack.top();
-						_postExpr += " ";
+						_newExpr += _charStack.top();
+						_newExpr += " ";
 						_charStack.pop();
 					}
 					_charStack.push(_currToken);
@@ -83,8 +86,8 @@ void Expressions::inExprToPostExpr() {
 			int _stackToken = _charStack.top();
 			_charStack.pop();
 			while (_stackToken != '(') {
-				_postExpr += _stackToken;
-				_postExpr += " ";
+				_newExpr += _stackToken;
+				_newExpr += " ";
 				_stackToken = _charStack.top();
 				_charStack.pop();
 			}
@@ -100,9 +103,9 @@ void Expressions::inExprToPostExpr() {
 	while (!_charStack.empty()) {
 		int _stackToken = _charStack.top();
 		_charStack.pop();
-		if (_stackToken != '(') { _postExpr += _stackToken; }
+		if (_stackToken != '(') { _newExpr += _stackToken; }
 	}
-	this->setExpressions(_postExpr);
+	this->setPostExpressions(_newExpr);
 	return;
 }
 

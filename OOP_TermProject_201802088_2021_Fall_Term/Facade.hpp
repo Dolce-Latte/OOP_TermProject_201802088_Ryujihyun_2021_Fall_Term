@@ -1,5 +1,5 @@
-#include <iostream>
-#include <string>
+#ifndef _FACADE_H_
+#define _FACADE_H_
 #include "Expressions.hpp"
 #include "Calculations.hpp"
 
@@ -9,9 +9,11 @@ private:
 	Calculations* _calculations = nullptr;
 	std::string _expr;
 public:
-	Facade(std::string expr) {}
-	~Facade() {}
+	Facade(std::string expr);
+	~Facade();
 
 	void operationExpr();
 	void operationCalc();
 };
+
+#endif

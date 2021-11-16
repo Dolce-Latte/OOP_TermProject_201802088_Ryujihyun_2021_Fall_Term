@@ -18,16 +18,16 @@
     <ClCompile Include="Calculator.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Add_Operation_Strategy.cpp">
+    <ClCompile Include="Add_Operation_Command.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Subtraction_Operation_Strategy.cpp">
+    <ClCompile Include="Subtraction_Operation_Command.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Multiplication_Operation_Strategy.cpp">
+    <ClCompile Include="Multiplication_Operation_Command.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Division_Operation_Strategy.cpp">
+    <ClCompile Include="Division_Operation_Command.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Expressions.cpp">

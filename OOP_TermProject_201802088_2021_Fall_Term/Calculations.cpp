@@ -1,9 +1,4 @@
 #include "Calculations.hpp"
-#include<iostream>
-#include<stack>
-Calculations::Calculations(std::string expr) : _expr(expr) {}
-
-Calculations::~Calculations() {}
 
 void Calculations::setExpressions(std::string expr) {
 	this->_expr = expr;

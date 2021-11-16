@@ -1,5 +1,3 @@
-#include<iostream>
-#include<string>
 #include "Facade.hpp"
 
 int main() {
@@ -9,7 +7,7 @@ int main() {
 
 	while (true) {
 		std::cout << "수식을 입력하세요.(종료 : QUIT)" << std::endl;
-		std::getline(std::cin, _input);
+		std::cin >> _input;
 
 		if (_input == "QUIT") { break; }
 		calculator = new Facade(_input);

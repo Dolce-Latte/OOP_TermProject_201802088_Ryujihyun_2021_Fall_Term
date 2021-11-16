@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Add_Operation_Strategy.cpp" />
+    <ClCompile Include="Add_Operation_Command.cpp" />
     <ClCompile Include="Calculations.cpp" />
     <ClCompile Include="Calculator.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -27,9 +27,9 @@
     <ClCompile Include="Expressions.cpp" />
     <ClCompile Include="Facade.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Subtraction_Operation_Strategy.cpp" />
-    <ClCompile Include="Multiplication_Operation_Strategy.cpp" />
-    <ClCompile Include="Division_Operation_Strategy.cpp" />
+    <ClCompile Include="Subtraction_Operation_Command.cpp" />
+    <ClCompile Include="Multiplication_Operation_Command.cpp" />
+    <ClCompile Include="Division_Operation_Command.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Add_Operation_Command.hpp" />

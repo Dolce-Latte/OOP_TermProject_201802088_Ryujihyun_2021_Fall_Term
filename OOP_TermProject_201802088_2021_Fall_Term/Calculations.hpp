@@ -1,6 +1,7 @@
 #ifndef _CALCULATIONS_H_
 #define _CALCULATIONS_H_
 #include<string>
+#include<stack>
 #include "Operation_Command.hpp"
 #include "Add_Operation_Command.hpp"
 #include "Subtraction_Operation_Command.hpp"
@@ -13,9 +14,6 @@ private:
 	std::string _expr;
 	Operation_Command* _calculations = nullptr;
 public:
-	
-	Calculations(std::string expr) {}
-	~Calculations() {}
 
 	void setExpressions(std::string expr);
 	void setResult(int result);

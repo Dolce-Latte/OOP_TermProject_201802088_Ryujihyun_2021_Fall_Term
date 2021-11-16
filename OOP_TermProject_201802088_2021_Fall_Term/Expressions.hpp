@@ -1,17 +1,18 @@
 #ifndef _EXPRESSIONS_H_
 #define _EXPRESSIONS_H_
+#include<iostream>
 #include<string>
 #include<stack>
 
 class Expressions {
 private:
-	std::string _expr;
+	std::string _preExpr;
+	std::string _postExpr;
 public:
-
-	Expressions(std::string expr){}
-	~Expressions() {}
-	void setExpressions(std::string expr);
-	std::string getExpressions();
+	void setPreExpressions(std::string preExpr);
+	void setPostExpressions(std::string postExpr);
+	std::string getPreExpressions();
+	std::string getPostExpressions();
 
 	void changeNumber();
 	void inExprToPostExpr();
