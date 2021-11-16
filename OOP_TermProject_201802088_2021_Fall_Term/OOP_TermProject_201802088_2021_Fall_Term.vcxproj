@@ -27,6 +27,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Add_Operation_Strategy.hpp" />
+    <ClInclude Include="Expressions.hpp" />
     <ClInclude Include="Operation_Strategy.hpp" />
     <ClInclude Include="Subtraction_Operation_Strategy.hpp" />
     <ClInclude Include="Multiplication_Operation_Strategy.hpp" />

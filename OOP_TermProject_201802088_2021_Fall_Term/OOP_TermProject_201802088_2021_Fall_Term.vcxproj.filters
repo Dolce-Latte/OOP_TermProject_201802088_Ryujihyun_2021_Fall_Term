@@ -47,5 +47,8 @@
     <ClInclude Include="Division_Operation_Strategy.hpp">
       <Filter>소스 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Expressions.hpp">
+      <Filter>소스 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
