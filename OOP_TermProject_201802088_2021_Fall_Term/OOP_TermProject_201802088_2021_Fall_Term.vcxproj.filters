@@ -33,24 +33,30 @@
     <ClCompile Include="Expressions.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Calculations.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Add_Operation_Strategy.hpp">
+    <ClInclude Include="Add_Operation_Command.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Subtraction_Operation_Strategy.hpp">
+    <ClInclude Include="Subtraction_Operation_Command.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Multiplication_Operation_Strategy.hpp">
+    <ClInclude Include="Multiplication_Operation_Command.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Operation_Strategy.hpp">
+    <ClInclude Include="Operation_Command.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Division_Operation_Strategy.hpp">
+    <ClInclude Include="Division_Operation_Command.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Expressions.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Calculations.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

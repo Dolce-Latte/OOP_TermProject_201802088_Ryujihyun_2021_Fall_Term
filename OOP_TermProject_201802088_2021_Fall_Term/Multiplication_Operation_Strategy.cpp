@@ -1,4 +1,4 @@
-#include "Multiplication_Operation_Strategy.hpp"
+#include "Multiplication_Operation_Command.hpp"
 
 Multiplication_Operation::~Multiplication_Operation() {}
 

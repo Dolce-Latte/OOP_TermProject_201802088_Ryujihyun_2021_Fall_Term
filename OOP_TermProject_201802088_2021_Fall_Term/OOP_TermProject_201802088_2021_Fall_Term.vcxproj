@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Add_Operation_Strategy.cpp" />
+    <ClCompile Include="Calculations.cpp" />
     <ClCompile Include="Calculator.cpp" />
     <ClCompile Include="Expressions.cpp" />
     <ClCompile Include="Subtraction_Operation_Strategy.cpp" />
@@ -27,12 +28,13 @@
     <ClCompile Include="Division_Operation_Strategy.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Add_Operation_Strategy.hpp" />
+    <ClInclude Include="Add_Operation_Command.hpp" />
+    <ClInclude Include="Calculations.hpp" />
     <ClInclude Include="Expressions.hpp" />
-    <ClInclude Include="Operation_Strategy.hpp" />
-    <ClInclude Include="Subtraction_Operation_Strategy.hpp" />
-    <ClInclude Include="Multiplication_Operation_Strategy.hpp" />
-    <ClInclude Include="Division_Operation_Strategy.hpp" />
+    <ClInclude Include="Operation_Command.hpp" />
+    <ClInclude Include="Subtraction_Operation_Command.hpp" />
+    <ClInclude Include="Multiplication_Operation_Command.hpp" />
+    <ClInclude Include="Division_Operation_Command.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

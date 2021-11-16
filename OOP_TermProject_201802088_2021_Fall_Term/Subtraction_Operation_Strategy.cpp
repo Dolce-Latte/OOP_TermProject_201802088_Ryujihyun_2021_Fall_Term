@@ -1,4 +1,4 @@
-#include "Subtraction_Operation_Strategy.hpp"
+#include "Subtraction_Operation_Command.hpp"
 
 Subtraction_Operation::~Subtraction_Operation() {}
 
