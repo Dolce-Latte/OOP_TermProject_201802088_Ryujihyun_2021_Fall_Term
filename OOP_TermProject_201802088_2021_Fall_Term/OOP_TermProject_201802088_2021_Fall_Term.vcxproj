@@ -25,7 +25,7 @@
     <ClCompile Include="Calculations.cpp" />
     <ClCompile Include="Division.cpp" />
     <ClCompile Include="Expressions.cpp" />
-    <ClCompile Include="Facade.cpp" />
+    <ClCompile Include="Facade_Calculator.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Multiplication.cpp" />
     <ClCompile Include="Subtraction.cpp" />
@@ -40,7 +40,7 @@
     <ClInclude Include="Calculations.hpp" />
     <ClInclude Include="Division.hpp" />
     <ClInclude Include="Expressions.hpp" />
-    <ClInclude Include="Facade.hpp" />
+    <ClInclude Include="Facade_Calculator.hpp" />
     <ClInclude Include="Multiplication.hpp" />
     <ClInclude Include="Operation_Command.hpp" />
     <ClInclude Include="Subtraction.hpp" />

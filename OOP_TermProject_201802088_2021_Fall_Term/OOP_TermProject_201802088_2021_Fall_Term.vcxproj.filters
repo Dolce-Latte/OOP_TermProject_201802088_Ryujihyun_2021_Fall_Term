@@ -33,7 +33,7 @@
     <ClCompile Include="Calculations.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Facade.cpp">
+    <ClCompile Include="Facade_Calculator.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
@@ -77,7 +77,7 @@
     <ClInclude Include="Calculations.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Facade.hpp">
+    <ClInclude Include="Facade_Calculator.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Addition.hpp">

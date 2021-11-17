@@ -1,5 +1,5 @@
-#ifndef _FACADE_H_
-#define _FACADE_H_
+#ifndef _FACADE_CALCULATOR_H_
+#define _FACADE_CALCULATOR_H_
 #include "Expressions.hpp"
 #include "Calculations.hpp"
 
