@@ -26,7 +26,7 @@
     <ClCompile Include="Division.cpp" />
     <ClCompile Include="Expressions.cpp" />
     <ClCompile Include="Facade_Calculator.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Calculator.cpp" />
     <ClCompile Include="Multiplication.cpp" />
     <ClCompile Include="Subtraction.cpp" />
     <ClCompile Include="Subtraction_Operation_Command.cpp" />
