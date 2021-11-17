@@ -64,6 +64,6 @@ void Calculations::calculate() {
 	_intStack.pop();
 	this->setResult(_answer);
 	delete _calCommand;
-	delete _add, _opAdd,_subtraction,_opSub,_multiple,_opMul,_div,_opDiv;
+	delete _opAdd,_opSub,_opMul,_opDiv;
 	return;
 }
