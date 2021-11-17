@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="Addition.cpp" />
     <ClCompile Include="Addition_Operation_Command.cpp" />
+    <ClCompile Include="Calculate_Command.cpp" />
     <ClCompile Include="Calculations.cpp" />
     <ClCompile Include="Division.cpp" />
     <ClCompile Include="Expressions.cpp" />
@@ -35,6 +36,7 @@
   <ItemGroup>
     <ClInclude Include="Addition.hpp" />
     <ClInclude Include="Addition_Operation_Command.hpp" />
+    <ClInclude Include="Calculate_Command.hpp" />
     <ClInclude Include="Calculations.hpp" />
     <ClInclude Include="Division.hpp" />
     <ClInclude Include="Expressions.hpp" />

@@ -41,20 +41,20 @@ void Calculations::calculate() {
 
 			switch (_charToken) {
 			case'+':
-				_calculations = new Addition_Operation();
-				_answer = _calculations->operationExecute(_secondOperand, _firstOperand);
+				_calCommand->setCommand(_opAdd);
+				_answer = _calCommand->run(_secondOperand,_firstOperand);
 				break;
 			case'-':
-				_calculations = new Subtraction_Operation();
-				_answer = _calculations->operationExecute(_secondOperand, _firstOperand);
+				_calCommand->setCommand(_opSub);
+				_answer = _calCommand->run(_secondOperand, _firstOperand);
 				break;
 			case'*':
-				_calculations = new Multiplication_Operation();
-				_answer = _calculations->operationExecute(_secondOperand, _firstOperand);
+				_calCommand->setCommand(_opMul);
+				_answer = _calCommand->run(_secondOperand, _firstOperand);
 				break;
 			case'/':
-				_calculations = new Division_Operation();
-				_answer = _calculations->operationExecute(_secondOperand, _firstOperand);
+				_calCommand->setCommand(_opDiv);
+				_answer = _calCommand->run(_secondOperand, _firstOperand);
 				break;
 			}
 		}
@@ -63,6 +63,7 @@ void Calculations::calculate() {
 	_answer = _intStack.top();
 	_intStack.pop();
 	this->setResult(_answer);
-	delete _calculations;
+	delete _calCommand;
+	delete _add, _opAdd,_subtraction,_opSub,_multiple,_opMul,_div,_opDiv;
 	return;
 }
