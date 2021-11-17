@@ -3,14 +3,14 @@
 #include "Expressions.hpp"
 #include "Calculations.hpp"
 
-class Facade_Calculator {
+class Facade {
 private:
 	Expressions* _expressions = nullptr;
 	Calculations* _calculations = nullptr;
 	std::string _expr;
 public:
-	Facade_Calculator(std::string expr);
-	~Facade_Calculator();
+	Facade(std::string expr);
+	~Facade();
 
 	void operationExpr();
 	void operationCalc();
