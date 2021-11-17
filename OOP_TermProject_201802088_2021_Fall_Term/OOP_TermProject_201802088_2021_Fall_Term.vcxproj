@@ -19,21 +19,29 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Add_Operation_Command.cpp" />
+    <ClCompile Include="Addition.cpp" />
+    <ClCompile Include="Addition_Operation_Command.cpp" />
     <ClCompile Include="Calculations.cpp" />
+    <ClCompile Include="Division.cpp" />
     <ClCompile Include="Expressions.cpp" />
     <ClCompile Include="Facade.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Multiplication.cpp" />
+    <ClCompile Include="Subtraction.cpp" />
     <ClCompile Include="Subtraction_Operation_Command.cpp" />
     <ClCompile Include="Multiplication_Operation_Command.cpp" />
     <ClCompile Include="Division_Operation_Command.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Add_Operation_Command.hpp" />
+    <ClInclude Include="Addition.hpp" />
+    <ClInclude Include="Addition_Operation_Command.hpp" />
     <ClInclude Include="Calculations.hpp" />
+    <ClInclude Include="Division.hpp" />
     <ClInclude Include="Expressions.hpp" />
     <ClInclude Include="Facade.hpp" />
+    <ClInclude Include="Multiplication.hpp" />
     <ClInclude Include="Operation_Command.hpp" />
+    <ClInclude Include="Subtraction.hpp" />
     <ClInclude Include="Subtraction_Operation_Command.hpp" />
     <ClInclude Include="Multiplication_Operation_Command.hpp" />
     <ClInclude Include="Division_Operation_Command.hpp" />

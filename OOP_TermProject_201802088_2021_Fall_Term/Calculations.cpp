@@ -41,7 +41,7 @@ void Calculations::calculate() {
 
 			switch (_charToken) {
 			case'+':
-				_calculations = new Add_Operation();
+				_calculations = new Addition_Operation();
 				_answer = _calculations->operationExecute(_secondOperand, _firstOperand);
 				break;
 			case'-':

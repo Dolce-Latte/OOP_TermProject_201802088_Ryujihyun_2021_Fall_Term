@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Add_Operation_Command.cpp">
+    <ClCompile Include="Addition_Operation_Command.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Subtraction_Operation_Command.cpp">
@@ -39,9 +39,21 @@
     <ClCompile Include="main.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Addition.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Subtraction.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Multiplication.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Division.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Add_Operation_Command.hpp">
+    <ClInclude Include="Addition_Operation_Command.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Subtraction_Operation_Command.hpp">
@@ -63,6 +75,18 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Facade.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Addition.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Subtraction.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Multiplication.hpp">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Division.hpp">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
