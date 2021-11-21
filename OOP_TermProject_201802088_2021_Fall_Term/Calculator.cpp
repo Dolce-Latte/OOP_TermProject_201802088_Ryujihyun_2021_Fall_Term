@@ -3,7 +3,7 @@
 int main() {
 
 	std::string _input;
-	Facade_Caculator* calculator;
+	Facade_Caculator* calculator = NULL;
 
 	while (true) {
 		std::cout << "수식을 입력하세요.(종료 : QUIT or EOF)" << std::endl;
