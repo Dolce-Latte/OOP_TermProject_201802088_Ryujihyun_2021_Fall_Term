@@ -3,7 +3,7 @@
 int main() {
 
 	std::string _input;
-	Facade* calculator;
+	Facade_Caculator* calculator;
 
 	while (true) {
 		std::cout << "수식을 입력하세요.(종료 : QUIT or EOF)" << std::endl;
@@ -12,7 +12,7 @@ int main() {
 			std::cout << "계산기를 종료합니다." << std::endl << std::endl;
 			break;
 		}
-		calculator = new Facade(_input);
+		calculator = new Facade_Caculator(_input);
 
 		try{
 			calculator->operationExpr();
@@ -25,6 +25,6 @@ int main() {
 			std::cout << "알 수 없는 오류" << std::endl << std::endl;
 		}
 	}
-
+	delete calculator;
 	return 0;
 }
