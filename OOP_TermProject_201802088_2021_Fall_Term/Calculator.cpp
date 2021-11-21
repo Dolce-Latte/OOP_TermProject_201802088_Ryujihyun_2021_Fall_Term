@@ -8,7 +8,6 @@ int main() {
 	while (true) {
 		std::cout << "수식을 입력하세요.(종료 : QUIT or EOF)" << std::endl;
 		std::cin >> _input;
-
 		if (_input == "QUIT" || std::cin.eof()) { 
 			std::cout << "계산기를 종료합니다." << std::endl << std::endl;
 			break;
