@@ -83,6 +83,9 @@ void Expressions::inExprToPostExpr() {
 			}
 		}
 		else if (_currToken == ')') {
+			if (PF == 0) {
+				throw std::logic_error("괄호의 개수가 맞지 않습니다!!");
+			}
 			int _stackToken = _charStack.top();
 			_charStack.pop();
 			while (_stackToken != '(') {
